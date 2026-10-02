@@ -64,7 +64,15 @@
                     <div class="sk-swing-dot"></div>
                 </div>
             </div>
-            <div class="card-header">{{ round($lastIncident->created_at->diffInDays(), 0) }} dias sin incidentes</div>
+            
+            <div class="card-header">
+                @if ($lastIncident)
+                    {{ round($lastIncident->created_at->diffInDays(), 0) }} dias sin incidentes
+                @else
+                    Sin incidentes registrados
+                @endif
+                
+            </div>
             <div class="card-body p-0">
                 <!-- /.row-->
                 <div class="table-responsive">
