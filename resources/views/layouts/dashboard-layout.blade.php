@@ -77,7 +77,16 @@
       <!-- Drag Target Area To SlideIn Menu On Small Screens -->
       <div class="drag-target"></div>
     </div>
-    @vite(['resources/js/serebo.dashboard.core.js','resources/js/serebo.dashboard.js'])
+    @vite(['resources/js/serebo.dashboard.core.js'])
+    <script src="{{ asset('admin-theme/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
+    <script src="{{ asset('admin-theme/vendor/libs/node-waves/node-waves.js') }}"></script>
+    <script src="{{ asset('admin-theme/vendor/libs/hammer/hammer.js') }}"></script>
+    <script src="{{ asset('admin-theme/vendor/libs/i18n/i18n.js') }}"></script>
+    {{-- <script src="{{ asset('admin-theme/vendor/libs/typeahead-js/typeahead.js') }}"></script> --}}
+    <script src="{{ asset('admin-theme/vendor/js/menu.js') }}"></script>
+    <script src="{{ asset('admin-theme/vendor/libs/bs-stepper/bs-stepper.js') }}"></script>
+    <script src="{{ asset('admin-theme/js/main.js') }}"></script>
+    @vite(['resources/js/serebo.dashboard.js'])
     <livewire:modals/>
     @livewireScripts
     @stack('scripts')
