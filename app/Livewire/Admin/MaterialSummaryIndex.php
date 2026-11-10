@@ -8,6 +8,8 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Exports\MaterialPhysicalInventoryExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 Class MaterialSummaryIndex extends Component
 {
@@ -117,5 +119,11 @@ Class MaterialSummaryIndex extends Component
             $this->sort = $sort;
             $this->direction = 'asc';
         }   
+    }
+
+    public function downloadMaterialPhysicalInventory()
+    {
+        $fileName = 'Planilla_Conteo_Fisico_Materiales_' . now()->format('Y.m.d H.i.s') . '.xlsx';
+        return Excel::download(new MaterialPhysicalInventoryExport, $fileName);
     }
 }

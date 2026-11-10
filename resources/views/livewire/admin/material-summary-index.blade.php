@@ -1,5 +1,5 @@
 <div class="row position-relative">
-    <div class="overlay d-none" wire:loading.class.remove="d-none" wire:target="previousPage, nextPage, gotoPage, idMSU, projectCode, materialSummaryTypeSelected, from, to, triggerLoading">
+    <div class="overlay d-none" wire:loading.class.remove="d-none" wire:target="previousPage, nextPage, gotoPage, idMSU, projectCode, materialSummaryTypeSelected, from, to, triggerLoading,downloadMaterialPhysicalInventory">
         <div class="spinner-grow" role="status">
             <span class="visually-hidden">Loading...</span>
           </div>
@@ -8,11 +8,26 @@
         <div class="d-flex flex-column justify-content-center">
             <h4 class="mb-1">Movimiento de materiales</h4>
         </div>
-        @can('admin.contracts.create')
-            <div class="d-flex align-content-center flex-wrap gap-4">
-                <a href="{{route('admin.materials-summary.create')}}" class="btn btn-primary waves-effect waves-light">Registrar movimiento</a>
+
+        <div class="d-flex d-lg-flex d-xl-flex align-content-center flex-wrap gap-4">
+            <div class="d-flex gap-4">
+                @can('admin.contracts.create')
+                    <a href="{{route('admin.materials-summary.create')}}" class="btn btn-primary waves-effect waves-light">
+                        <span>
+                            <i class="icon-base ti ti-plus me-0 me-sm-1 icon-16px"></i>
+                            <span class="d-none d-sm-inline-block">Registrar movimiento</span>
+                        </span>    
+                    </a>
+                @endcan
+                <a class="btn btn-label-secondary" href="javascript:void(0);" wire:click="downloadMaterialPhysicalInventory">
+                    <span>
+                        <i class="icon-base ti ti-download me-0 me-sm-1 icon-16px"></i>
+                        <span class="d-none d-sm-inline-block">Inventario general</span>
+                    </span>
+                </a>
             </div>
-        @endcan
+        </div>
+        
     </div>
 
     <div class="col-md-2">
